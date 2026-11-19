@@ -1,0 +1,72 @@
+/* CSS Document */
+.threeCol .cell {
+    padding: 0;
+    background: rgba(255,255,255,0.05) !important;
+    padding-top: 1rem;
+}
+.threeCol .panel {
+    background: transparent !important;
+    border-radius: 0 !important;
+}
+.green-circle.center, .blue-circle.center, .orange-circle.center, .icon-box .icon-box-icon {
+    background: #004663;
+    width: 125px;
+    height: 125px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 100%;
+    margin-top: -85px;
+    margin-bottom: 40px !important;
+    position: relative;
+}
+.green-circle.center img, .blue-circle.center img, .orange-circle.center img, .icon-box .icon-box-icon img {
+    width: 95px;
+    margin-top: 15px !important;
+}
+.threeCol .panel h2,
+.icon-box .icon-box-title h6 {
+    margin: 0 0 12px;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+.threeCol .panel {
+    padding: 20px;
+}
+.threeCol .panel hr {
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    border: 0;
+    border-top: 1px solid rgba(255,255,255,0.07);
+}
+.threeCol .panel h2, .icon-box .icon-box-title h6 {
+    margin: 0 0 12px;
+    font-size: 1.2rem !important;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-family: "Poppins", Arial;
+    font-weight: bold !important;
+    letter-spacing: .001rem;
+}
+
+a.btn.btn-outline.btn-white {
+    color: white;
+    display: block;
+    font-family: "Quadon", Arial;
+    border: 1px rgba(255,255,255,0.4) solid;
+    border-radius: 0;
+    max-width: 70%;
+    margin: 50px auto 20px;
+    padding: 10px;
+    font-weight: normal;
+    transition: all .5s ease;
+    background: none !important;
+}
+
+@media (max-width:800px){
+    .threeCol .cell {
+        text-align: center !important;
+        margin-top: 30px !important;
+        padding-bottom: 50px !important;
+    }
+}

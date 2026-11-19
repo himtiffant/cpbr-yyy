@@ -1,0 +1,272 @@
+/*Adding word menu to nav bars */
+.menu-item-span::before {
+  content: "Menu ";
+}
+/* Related CSS to the new nav -- on the development server i added this on the layout-1600.css file  */ 
+.off-canvas-content {
+    padding: 1rem;
+}
+.off-canvas-sidebar-open .off-canvas-sidebar {
+    -webkit-transform: translateX(-46vw);
+    transform: translateX(-46vw);
+}
+
+.off-canvas-sidebar {
+    width: 46vw;
+    right: -46vw;
+    z-index: 9999;
+}
+
+/*aside.widget.widget-text {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 20px;
+}*/
+
+.menu-group {
+    padding: 1rem;
+}
+.off-canvas-sidebar .heading-two {
+	color:#fff;
+    font-family: "Quadon", Arial;
+    font-size: 1.2rem;
+    font-weight: normal !important;
+    letter-spacing: .05em;
+    line-height: normal;
+    text-transform: uppercase;
+    margin: 0 0 1rem 0;
+    border-bottom: 1px #d43c00 solid;
+    padding-bottom: 0.5rem;
+}
+.off-canvas-sidebar .textwidget a {
+    background: none;
+    display: block;
+    font-size: .82rem;
+    padding: 0;
+    margin-bottom: 3px;
+    text-transform: none;
+    color: white;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    border: 1px #004663 solid;
+    border-right: none;
+    border-left: none;
+}
+.off-canvas-sidebar .textwidget a.active, .off-canvas-sidebar .textwidget a:hover {
+    background: none;
+    border: 1px #d43c00 solid;
+    border-left: none;
+    border-right: none;
+    padding: 0;
+  
+}
+
+
+ul.social-icons.text-center {
+    margin-top: 3rem;
+}
+
+/*the following class might be already fixed on the current site - makes the icons larger*/
+.social-icons > li > a {
+    font-size: 1.2125rem;
+}
+
+@media(max-width:821px){
+		.mnav .grid-x .cell:first-child {
+			margin-top: 1.7rem;
+		}
+		.off-canvas-sidebar {
+    		width: 90vw;
+			right: -90vw;
+		}
+		.off-canvas-sidebar {
+    		width: 90vw;
+			right: -90vw;
+		}
+		.off-canvas-sidebar-open .off-canvas-sidebar {
+			-webkit-transform: translateX(-90vw);
+			transform: translateX(-90vw);
+		}
+	}
+	
+menu {
+    display: block;
+    list-style-type: none;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding-inline-start:0;
+}
+
+#newsList, #events{
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(2, 2fr);
+    column-gap: 3em;
+    row-gap: 1.5em;
+}
+
+/* Added on 06/28/23 for the News-Our Impact Section on the homepages */
+#top-news-item {
+  /*background-color: rgba(0, 67, 100, 0.55);*/
+  padding-block: 3em;
+}
+#latest-news .headline{
+  color: #c4481d !important;
+  border-bottom: 1px solid #c4481d;
+  font-family: "Quadon", Arial;
+font-weight: normal !important;
+letter-spacing: .05em;
+  font-size: 3rem;
+  text-transform: uppercase;
+  margin-bottom:1em;
+  
+}
+
+#top-news-item a, #top-news-item p {
+  display:inline-block;    
+  color:#fff;
+  text-decoration: none;
+}
+#top-news-item div.cell.small-12.large-6:first-of-type {
+   background: rgba(196, 72, 29, 0.97) !important;
+   padding: 5%;
+   margin-right: -3em;
+}
+
+#latest-news h3 > a {
+  font-size: .70em;
+  text-decoration: none;
+  letter-spacing: normal;
+  text-align: left !important;
+  font-weight: bold;
+}
+#latest-news h3 > a:hover{
+  color: #c4481d;
+  text-decoration: underline;
+}
+.news-background {
+  padding-block: 3rem;
+  margin-bottom: 3rem;
+}
+.featured-news a {
+  text-decoration: none;
+  font-family: "Quadon";
+
+}
+.featured-news a:hover > h3, .featured-news a:focus > h3{
+  color:#c4481d !important;; 
+  text-decoration: underline;
+  
+}
+#top-news-item a:hover, #top-news-item a:focus{
+  text-decoration: underline;
+}
+
+.callout.panel.promo.text-center, #top-news-item .align-self-middle{
+  transition: all 350ms ease-in-out 0s;
+}
+/*.callout.panel.promo.text-center img {
+  filter: grayscale(1);
+}
+
+.callout.panel.promo.text-center:hover img {
+  filter: grayscale(0);
+}*/
+
+.callout.panel.promo.text-center:hover, #latest-news .button:hover, #latest-news .button:focus{
+    transform: scale(1.06);
+  -ms-box-shadow: 0px 8px 21px 0px rgba(25,15,8,0.13);
+  -o-box-shadow: 0px 8px 21px 0px rgba(25,15,8,0.13);
+  box-shadow: 0px 8px 21px 0px rgba(25,15,8,0.13);
+  z-index: 500;
+}
+
+#top-news-item .align-self-middle:hover {
+  scale: 1.1;
+}
+
+#latest-news{
+  position: relative;
+  padding-bottom: 3rem;
+}
+#top-news-item:after {
+  content: "";
+  background: #004564;
+  position: absolute;
+  top: 25%;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  transform: skewY(-5deg);
+  z-index: -1;
+  height: 40%;
+}
+
+#latest-news .callout {
+  border: 1px solid #004364;
+}
+
+#latest-news .button {
+  background-color: #c4481d;
+  width: max-content;
+  border: 1px solid #c4481d;
+  padding-inline: 3rem;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+tbody tr:nth-child(2n) {
+  /*overriding the background*/
+  background-color: #f7f7f7;
+}
+
+
+@media(max-width:500px){
+   
+.menu-item-span::before {
+  content: "";
+  display:none;
+}
+}
+
+@media(max-width:600px){
+    #newsList, #events{
+        display: block;
+    }
+    #newsList li, #events li{
+        margin-block:1.5em;
+    }
+}
+
+@media (min-width:1600px){
+    .module-cover h1, .module-cover-slides h1 {
+    	font-weight: 500;
+    	font-size: 5rem;
+	}
+	.hero p {
+    	font-size: 1.2rem;
+	}
+}
+@media (min-width:2300px){
+    .hero h1, .module-cover-slides h1 {
+    	font-weight: 500;
+    	font-size: 5.5rem !important;
+	}
+	.hero p {
+    	font-size: 1.5rem;
+	}
+	.hero-min.module-cover h1 {
+		font-weight: 500;
+		font-size: 5rem !important;
+	}
+	.hero-min.hero p {
+		max-width: 90%;
+		float: right;
+    	font-size: 1.5rem !important;
+	}
+}

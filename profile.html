@@ -1,0 +1,185 @@
+
+<style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: white;
+  min-height: 100vh;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  height:100%;
+  width:100%;
+}
+
+.container {
+  display: grid;
+  grid-auto-columns: minmax(200px, 450px);
+  column-gap: 1em;
+  row-gap: 1em;
+}
+
+.card {
+  background:#002856;
+  background-image: linear-gradient(to bottom, #002856 375px, #AE6042 275px);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: auto;
+  height: 650px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 48px 0 rgba(31, 38, 135, 0.5);
+}
+
+.card-header {
+  text-align: center;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.profile-img {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+}
+
+.profile-img img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.profile-img img.hover-img {
+    top:0;
+    opacity: 0;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+}
+
+/* Show hover image on mouseover */
+.profile-img:hover img.hover-img {
+    opacity: 1;
+}
+
+.status-badge {
+  display: inline-block;
+  background: #747578;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.card-body {
+  text-align: center;
+  color: white;
+}
+
+.name {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: white;
+}
+
+.bio {
+  font-size: 14px;
+  line-height: 1.6;
+  color: white;
+  margin-bottom: 10px;
+}
+
+
+
+
+.follow-btn {
+  width: 300px;
+  padding: 14px;
+  background: linear-gradient(135deg,white 100%);
+  color: #002856;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  bottom:30px;
+  left:50px;
+}
+
+.follow-btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 20px;
+  }
+  
+  .stats {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+</style>
+
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <div class="profile-img">
+        <img src="pictures/static/Vanessa-Schick.png"
+        onmouseover="this.src='pictures/hover/Vanessa-Schick-hover.png'"
+        onmouseout="this.src='pictures/static/Vanessa-Schick.png'">
+      </div>
+    </div>
+    
+    <div class="card-body">
+      <h2 class="name">Vanessa Schick, Ph.D</h2>
+      <p class="bio">I'm interested in community-engaged research with a special focus on underserved populations of women and an emerging interest in fertility research.</p>
+      
+      <div class="status-badge">San Antonio</div>
+      <div class="status-badge">Survey Design</div>
+      <div class="status-badge">Community Data Collection</div>
+      
+      <button class="follow-btn">Watch My Video</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="profile-img">
+        <img src="pictures/static/Jack-Tsai.png"
+        onmouseover="this.src='pictures/hover/Jack-Tsai-hover.png'"
+        onmouseout="this.src='pictures/static/Jack-Tsai.png'">
+      </div>
+    </div>
+    
+    <div class="card-body">
+      <h2 class="name">Jack Tsai, Ph.D</h2>
+      <p class="bio">I'm Interested in all community-engaged research with a special focus on underserved populations of women.</p>
+      
+      <div class="status-badge">San Antonio</div>
+      <div class="status-badge">Clinical Trials</div>
+      <div class="status-badge">Survey Design</div>
+      
+      <button class="follow-btn">Watch My Video</button>
+    </div>
+  </div>
+  </div>

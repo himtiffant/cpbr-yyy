@@ -1,0 +1,102 @@
+/* GRID */
+.hero {
+    /*ADA AA CONTRAST*/
+    background-color: #004564 !important;
+}
+.hero .row.grid-x {
+    vertical-align: middle !important;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.hero #header-text {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 83.33333%;
+    flex: 0 0 83.33333%;
+    max-width: 93.33333%;
+    margin-left: 6.66667%;
+    margin-right: 3%;
+/*    min-height: 50vh;   */
+    min-height: 45vh;   
+}
+@media (min-width:801px){
+    .hero #header-text {
+        max-width: 83.33333%;
+        margin-left: 16.66667%;
+    }
+}
+.heroHeader.whiteText .columns {
+    background: transparent;
+    border: none;
+}
+/*TITLE*/
+.heroHeader h1 {
+       text-transform: uppercase;
+       text-align: right;
+       font-size: 4rem;    
+   }
+.heroHeader.whiteText h1 {
+    color: #fff;
+    text-shadow: none;
+}
+
+.whiteText .hero-subheading {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-style: normal;
+    text-align: right;
+    text-shadow: 0 0 20px rgba(0,0,0,1);
+}
+
+@media only screen and (min-width: 40.063em){
+   .heroHeader.full-width h1 {
+       font-size: 4rem;
+   }
+   .hero-subheading {
+    font-size: 1.2rem;
+    max-width: 80%;
+    margin-left: 20%;
+   }
+}
+
+@media (max-width:800px){
+    
+    .heroHeader br {
+        display: none;
+    } 
+    .heroHeader h1 {
+        font-size: 2rem;
+    }
+    .whiteText .hero-subheading {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+    .heroHeader.full-width h1 {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width:400px){
+    .hero #header-text {
+        margin-top: -40%;
+    }
+    .heroHeader br {
+        display: none;
+    } 
+    .heroHeader h1 {
+        font-size: 2rem;
+    }
+    .whiteText .hero-subheading {
+        font-size: 0.9rem;
+        line-height: 1.2rem;
+    }
+    .heroHeader.full-width h1 {
+        font-size: 1.5rem;
+    }
+    .heroHeader.full-width h1 {
+        font-size: 2rem;
+    }
+}
