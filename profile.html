@@ -1,4 +1,5 @@
-
+<html>
+  <head>
 <style>
     * {
   margin: 0;
@@ -10,7 +11,6 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: white;
   min-height: 100vh;
-  display: grid;
   align-items: center;
   justify-content: center;
   padding: 20px;
@@ -20,12 +20,13 @@ body {
 
 .container {
   display: grid;
-  grid-auto-columns: minmax(200px, 450px);
-  column-gap: 1em;
-  row-gap: 1em;
+  grid-template-columns: repeat(auto-fill, 400px);
+  row-gap: 20px;
+  column-gap: 20px;
 }
 
-.card {
+
+#profile .card {
   background:#002856;
   background-image: linear-gradient(to bottom, #002856 375px, #AE6042 275px);
   backdrop-filter: blur(10px);
@@ -33,47 +34,34 @@ body {
   padding: 25px;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: auto;
+  width: 400px;
   height: 650px;
 }
 
-.card:hover {
+#profile .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 12px 48px 0 rgba(31, 38, 135, 0.5);
 }
 
-.card-header {
+#profile .card-header {
   text-align: center;
   position: relative;
   margin-bottom: 20px;
 }
 
-.profile-img {
-  width: 200px;
-  height: 200px;
+#profile .profile-img {
+  width: 350px;
+  height: 350px;
   overflow: hidden;
 }
 
-.profile-img img {
-  width: 200px;
-  height: 200px;
+#profile .profile-img img {
+  width: 350px;
+  height: 350px;
   object-fit: cover;
 }
 
-.profile-img img.hover-img {
-    top:0;
-    opacity: 0;
-    width: 300px;
-    height: 300px;
-    overflow: hidden;
-}
-
-/* Show hover image on mouseover */
-.profile-img:hover img.hover-img {
-    opacity: 1;
-}
-
-.status-badge {
+#profile .status-badge {
   display: inline-block;
   background: #747578;
   color: white;
@@ -84,19 +72,19 @@ body {
   margin-bottom: 30px;
 }
 
-.card-body {
+#profile .card-body {
   text-align: center;
   color: white;
 }
 
-.name {
+#profile .name {
   font-size: 28px;
   font-weight: 700;
   margin-bottom: 8px;
   color: white;
 }
 
-.bio {
+#profile .bio {
   font-size: 14px;
   line-height: 1.6;
   color: white;
@@ -104,9 +92,7 @@ body {
 }
 
 
-
-
-.follow-btn {
+#profile .follow-btn {
   width: 300px;
   padding: 14px;
   background: linear-gradient(135deg,white 100%);
@@ -122,64 +108,73 @@ body {
   left:50px;
 }
 
-.follow-btn:hover {
+#profile .follow-btn:hover {
   transform: scale(1.02);
   box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
 }
 
-@media (max-width: 480px) {
-  .card {
+@media (max-width: 350) {
+  #profile .card {
     padding: 20px;
   }
   
-  .stats {
+  #profile .stats {
     flex-direction: column;
     gap: 15px;
   }
 }
 
 </style>
+</head>
 
-<div class="container">
-  <div class="card">
-    <div class="card-header">
-      <div class="profile-img">
-        <img src="pictures/static/Vanessa-Schick.png"
-        onmouseover="this.src='pictures/hover/Vanessa-Schick-hover.png'"
-        onmouseout="this.src='pictures/static/Vanessa-Schick.png'">
+<body>
+
+<div id="profile" class="container">
+  <div id="profile" class="card" 
+    onmouseover="schick.src='pictures/hover/Vanessa-Schick-hover.png'"
+    onmouseout="schick.src='pictures/static/Vanessa-Schick.png'">
+    <div id="profile" class="card-header">
+      <div id="profile" class="profile-img">
+        <img src="pictures/static/Vanessa-Schick.png" name="schick">
       </div>
     </div>
-    
-    <div class="card-body">
+
+    <div id="profile" class="card-body">
       <h2 class="name">Vanessa Schick, Ph.D</h2>
       <p class="bio">I'm interested in community-engaged research with a special focus on underserved populations of women and an emerging interest in fertility research.</p>
       
-      <div class="status-badge">San Antonio</div>
-      <div class="status-badge">Survey Design</div>
-      <div class="status-badge">Community Data Collection</div>
+      <div id="profile" class="status-badge">San Antonio</div>
+      <div id="profile" class="status-badge">Survey Design</div>
+      <div id="profile" class="status-badge">Community Data Collection</div>
       
-      <button class="follow-btn">Watch My Video</button>
+      <button id="profile" class="follow-btn">Watch My Video</button>
     </div>
   </div>
 
-  <div class="card">
-    <div class="card-header">
-      <div class="profile-img">
-        <img src="pictures/static/Jack-Tsai.png"
-        onmouseover="this.src='pictures/hover/Jack-Tsai-hover.png'"
-        onmouseout="this.src='pictures/static/Jack-Tsai.png'">
+
+  <div id="profile" class="card"
+    onmouseover="tsai.src='pictures/hover/Jack-Tsai-hover.png'"
+    onmouseout="tsai.src='pictures/static/Jack-Tsai.png'">
+    <div id="profile" class="card-header">
+      <div id="profile" class="profile-img">
+        <img src="pictures/static/Jack-Tsai.png" name="tsai">
       </div>
     </div>
     
-    <div class="card-body">
+    <div id="profile" class="card-body">
       <h2 class="name">Jack Tsai, Ph.D</h2>
       <p class="bio">I'm Interested in all community-engaged research with a special focus on underserved populations of women.</p>
       
-      <div class="status-badge">San Antonio</div>
-      <div class="status-badge">Clinical Trials</div>
-      <div class="status-badge">Survey Design</div>
+      <div id="profile" class="status-badge">San Antonio</div>
+      <div id="profile" class="status-badge">Clinical Trials</div>
+      <div id="profile" class="status-badge">Survey Design</div>
       
-      <button class="follow-btn">Watch My Video</button>
+      <button id="profile" class="follow-btn">Watch My Video</button>
     </div>
   </div>
-  </div>
+
+  <div id="profile" class="card"></div>
+</div>
+
+</body>
+</html>
