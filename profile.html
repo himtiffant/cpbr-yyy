@@ -21,6 +21,7 @@ body {
 .container {
   display: grid;
   grid-template-columns: repeat(auto-fill, 400px);
+  grid-template-rows: auto;
   row-gap: 20px;
   column-gap: 20px;
 }
@@ -28,14 +29,15 @@ body {
 
 #profile .card {
   background:#002856;
-  background-image: linear-gradient(to bottom, #002856 375px, #AE6042 275px);
+  background-image: linear-gradient(to bottom, #002856 400px, #AE6042 275px);
   backdrop-filter: blur(10px);
   border-radius: 20px;
-  padding: 25px;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 400px;
-  height: 650px;
+  min-height: 625px;
+  display: none;
+
 }
 
 #profile .card:hover {
@@ -46,22 +48,46 @@ body {
 #profile .card-header {
   text-align: center;
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 
 #profile .profile-img {
-  width: 350px;
-  height: 350px;
+  width: 400px;
+  height: 400px;
   overflow: hidden;
+  border-radius: 20px 20px 0px 0px;
 }
 
 #profile .profile-img img {
-  width: 350px;
-  height: 350px;
+  width: 400px;
+  height: 400px;
   object-fit: cover;
+  border-radius: 20px 20px 0px 0px;
 }
 
-#profile .status-badge {
+#profile .location-badge {
+  display: inline-block;
+  background: #4E738A;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+#profile .unique-skill-badge {
+  display: inline-block;
+  background: #587E6A;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+#profile .skill-badge {
   display: inline-block;
   background: #747578;
   color: white;
@@ -69,16 +95,22 @@ body {
   border-radius: 20px;
   font-size: 10px;
   font-weight: 600;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
+
 
 #profile .card-body {
   text-align: center;
   color: white;
+  height: 350px;
+  margin-top: 15px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 15px;
 }
 
 #profile .name {
-  font-size: 28px;
+  font-size: 25px;
   font-weight: 700;
   margin-bottom: 8px;
   color: white;
@@ -89,10 +121,11 @@ body {
   line-height: 1.6;
   color: white;
   margin-bottom: 10px;
+  height: 90px;
 }
 
 
-#profile .follow-btn {
+#profile .video-btn {
   width: 300px;
   padding: 14px;
   background: linear-gradient(135deg,white 100%);
@@ -104,13 +137,50 @@ body {
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-  bottom:30px;
-  left:50px;
+  margin-left:50px;
+  margin-bottom:25px;
 }
 
-#profile .follow-btn:hover {
+#profile .video-btn:hover {
   transform: scale(1.02);
   box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+#profile .skills-tab {
+  background-color: #4E738A;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 350px;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+#profile .active, #profile .skills-tab:hover {
+  background-color: #95ABB9;
+  color: white;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+#profile .skills-tab-content {
+  width:350px;
+  padding: 10px 10px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+#profile .skills-tab:after {
+  content: '\002B';
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
 }
 
 @media (max-width: 350) {
@@ -124,13 +194,80 @@ body {
   }
 }
 
+.filter-tab {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 150px);
+  grid-template-rows: auto;
+  row-gap: 10px;
+  column-gap: 15px;
+  margin-bottom: 25px;
+}
+
+.filterDiv {
+  float: left;
+  background-color: #2196F3;
+  color: #ffffff;
+  width: 200px;
+  line-height: 100px;
+  text-align: center;
+  margin: 2px;
+  display: none; /* Hidden by default */
+}
+
+/* The "show" class is added to the filtered elements */
+#profile .card.show {
+  display: block;
+}
+
+/* Style the buttons */
+.filter-btn {
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+/* Add a light grey background on mouse-over */
+.filter-btn:hover {
+  background-color: #E4E4E4
+}
+
+/* Add a dark background to the active button */
+.filter-btn.active {
+  background-color:  #747578;
+  color: white;
+}
+
 </style>
+
+
 </head>
 
 <body>
 
+<div id="skill-filter" class="filter-tab">
+  <button class="filter-btn active" onclick="filterSelection('all')"> All</button>
+  <button class="filter-btn" onclick="filterSelection('survey')"> Survey Design & Measurement</button>
+  <button class="filter-btn" onclick="filterSelection('qual')"> Qualitative Research</button>
+  <button class="filter-btn" onclick="filterSelection('quant')"> Quantitative</button>
+  <button class="filter-btn" onclick="filterSelection('mixed')"> Mixed Methods Research</button>
+  <button class="filter-btn" onclick="filterSelection('comm-engaged')"> Community-Engaged Research</button>
+  <button class="filter-btn" onclick="filterSelection('comm-need')"> Community Needs Assessment</button>
+  <button class="filter-btn" onclick="filterSelection('interv-dev')"> Intervention Development</button>
+  <button class="filter-btn" onclick="filterSelection('prog-eval')"> Program Evaluation</button>
+  <button class="filter-btn" onclick="filterSelection('implement-sci')"> Implementation Science</button>
+  <button class="filter-btn" onclick="filterSelection('exp-design')"> Experimental & Trial Design</button>
+  <button class="filter-btn" onclick="filterSelection('geospatial')"> Geospatial Analysis</button>
+  <button class="filter-btn" onclick="filterSelection('econ-eval')"> Economic Evaluation</button>
+  <button class="filter-btn" onclick="filterSelection('policy')"> Policy Analysis</button>
+  <button class="filter-btn" onclick="filterSelection('evidence')"> Evidence Synthesis</button>
+</div>
+
 <div id="profile" class="container">
-  <div id="profile" class="card" 
+
+  <!-- Dr. Schick -->
+  <div id="profile" class="card survey quant mixed comm-engaged comm-need interv-dev prog-eval" 
     onmouseover="schick.src='pictures/hover/Vanessa-Schick-hover.png'"
     onmouseout="schick.src='pictures/static/Vanessa-Schick.png'">
     <div id="profile" class="card-header">
@@ -140,19 +277,30 @@ body {
     </div>
 
     <div id="profile" class="card-body">
-      <h2 class="name">Vanessa Schick, Ph.D</h2>
+      <h2 class="name">Vanessa Schick, PhD</h2>
       <p class="bio">I'm interested in community-engaged research with a special focus on underserved populations of women and an emerging interest in fertility research.</p>
       
-      <div id="profile" class="status-badge">San Antonio</div>
-      <div id="profile" class="status-badge">Survey Design</div>
-      <div id="profile" class="status-badge">Community Data Collection</div>
+      <div id="profile" class="location-badge">San Antonio</div>
+      <div id="profile" class="location-badge">Houston</div>
+      <br>
+      <div id="profile" class="unique-skill-badge">Community Data Collection</div>
+      <div id="profile" class="skill-badge">Survey Design & Measurement</div>
+      <div id="profile" class="skill-badge">Quantitative Research</div>
+      <div id="profile" class="skill-badge">Mixed Methods Research</div>
+      <div id="profile" class="skill-badge">Community-Engaged Research</div>
+      <div id="profile" class="skill-badge">Community Needs Assessment</div>
+      <div id="profile" class="skill-badge">Intervention Development</div>
+      <div id="profile" class="skill-badge">Program Evaluation</div>
       
-      <button id="profile" class="follow-btn">Watch My Video</button>
     </div>
+      <a href="https://www.youtube.com/watch?v=_F6-CLT5rOs" target="_blank">
+      <button id="profile" class="video-btn">Watch My Video</button>
+      </a>
+    
   </div>
 
-
-  <div id="profile" class="card"
+  <!-- Dr. Tsai -->
+  <div id="profile" class="card survey"
     onmouseover="tsai.src='pictures/hover/Jack-Tsai-hover.png'"
     onmouseout="tsai.src='pictures/static/Jack-Tsai.png'">
     <div id="profile" class="card-header">
@@ -162,19 +310,479 @@ body {
     </div>
     
     <div id="profile" class="card-body">
-      <h2 class="name">Jack Tsai, Ph.D</h2>
+      <h2 class="name">Jack Tsai, PhD</h2>
       <p class="bio">I'm Interested in all community-engaged research with a special focus on underserved populations of women.</p>
       
-      <div id="profile" class="status-badge">San Antonio</div>
-      <div id="profile" class="status-badge">Clinical Trials</div>
-      <div id="profile" class="status-badge">Survey Design</div>
+      <div id="profile" class="location-badge">San Antonio</div>
+      <br>
+      <div id="profile" class="unique-skill-badge">Clinical Trials</div>
+      <div id="profile" class="skill-badge">Survey Design & Measurement</div>
       
-      <button id="profile" class="follow-btn">Watch My Video</button>
     </div>
+
+      <a href="https://www.youtube.com/watch?v=fgoGq-6OGOI" target="_blank">
+      <button id="profile" class="video-btn">Watch My Video</button>
+      </a>
+
   </div>
 
-  <div id="profile" class="card"></div>
+    <!-- Dr. Alsharawy -->
+  <div id="profile" class="card survey quant interv-dev prog-eval exp-design econ-eval policy evidence"
+    onmouseover="alsharawy.src='pictures/hover/Abdelaziz-Alsharawy-hover.png'"
+    onmouseout="alsharawy.src='pictures/static/Abdelaziz-Alsharawy.png'">
+    <div id="profile" class="card-header">
+      <div id="profile" class="profile-img">
+        <img src="pictures/static/Abdelaziz-Alsharawy.png" name="alsharawy">
+      </div>
+    </div>
+    
+    <div id="profile" class="card-body">
+      <h2 class="name" >Abdelaziz Alsharawy, PhD</h2>
+      <p class="bio">I’m a behavioral economist using experiments and surveys to study how patients and families make health decisions, and how AI might help.</p>
+      
+      <div id="profile" class="location-badge">Houston</div>
+      <br>
+      <div id="profile" class="unique-skill-badge">Decision-Making Process Measurement</div>
+      <div id="profile" class="unique-skill-badge">Eye-Tracking</div>
+      <div id="profile" class="unique-skill-badge">Facial Expression Analysis</div>
+      <div id="profile" class="unique-skill-badge">Psychophysiological Measurement</div>
+      <div id="profile" class="skill-badge">Survey Design & Measurement</div>
+      <div id="profile" class="skill-badge">Quantitative Research</div>
+      <div id="profile" class="skill-badge">Intervention Development</div>
+      <div id="profile" class="skill-badge">Program Evaluation</div>
+      <div id="profile" class="skill-badge">Experimental & Trial Design</div>
+      <div id="profile" class="skill-badge">Economic Evaluation</div>
+      <div id="profile" class="skill-badge">Policy Analysis</div>
+      <div id="profile" class="skill-badge">Evidence Synthesis</div>
+      
+    </div>
+
+      <a href="" target="_blank">
+      <button id="profile" class="video-btn">Watch My Video</button>
+      </a>
+      
+  </div>
+
+  <!-- Dr. Ferguson -->
+  <div id="profile" class="card"
+    onmouseover="ferguson.src='pictures/hover/Gayla-Ferguson-hover.png'"
+    onmouseout="ferguson.src='pictures/static/Gayla-Ferguson.png'">
+    <div id="profile" class="card-header">
+      <div id="profile" class="profile-img">
+        <img src="pictures/static/Gayla-Ferguson.png" name="ferguson">
+      </div>
+    </div>
+    
+    <div id="profile" class="card-body">
+      <h2 class="name">Gayla Ferguson, DrPH</h2>
+      <p class="bio"></p>
+      
+      <div id="profile" class="location-badge">Houston</div>
+      <br>
+      
+    </div>
+
+      <a href="" target="_blank">
+      <button id="profile" class="video-btn">Watch My Video</button>
+      </a>
+      
+  </div>
+  
+  <!-- Dr. Forkus -->
+  <div id="profile" class="card survey quant mixed"
+    onmouseover="forkus.src='pictures/hover/Shannon-Forkus-hover.png'"
+    onmouseout="forkus.src='pictures/static/Shannon-Forkus.png'">
+    <div id="profile" class="card-header">
+      <div id="profile" class="profile-img">
+        <img src="pictures/static/Shannon-Forkus.png" name="forkus">
+      </div>
+    </div>
+    
+    <div id="profile" class="card-body">
+      <h2 class="name">Shannon Forkus, PhD</h2>
+      <p class="bio">I am interested in understanding how trauma influences mental health and substance use, with the goal of improving recovery and well-being.</p>
+      
+      <div id="profile" class="location-badge">San Antonio</div>
+      <br>
+      <div id="profile" class="skill-badge">Survey Design & Measurement</div>
+      <div id="profile" class="skill-badge">Quantitative Research</div>
+      <div id="profile" class="skill-badge">Mixed Methods Research</div>
+      
+    </div>
+
+      <a href="" target="_blank">
+      <button id="profile" class="video-btn">Watch My Video</button>
+      </a>
+      
+  </div>
+
+  <!-- Dr. Gao -->
+  <div id="profile" class="card"
+    onmouseover="gao.src='pictures/hover/Jingjing-Gao-hover.png'"
+    onmouseout="gao.src='pictures/static/Jingjing-Gao.png'">
+    <div id="profile" class="card-header">
+      <div id="profile" class="profile-img">
+        <img src="pictures/static/Jingjing-Gao.png" name="gao">
+      </div>
+    </div>
+    
+    <div id="profile" class="card-body">
+      <h2 class="name">Jingjing Gao, PhD</h2>
+      <p class="bio"></p>
+      
+      <div id="profile" class="location-badge">Houston</div>
+      <br>
+      
+    </div>
+
+      <a href="" target="_blank">
+      <button id="profile" class="video-btn">Watch My Video</button>
+      </a>
+      
+  </div>
+
+  <!-- Dr. Liang -->
+  <div id="profile" class="card qual quant mixed interv-dev prog-eval exp-design"
+    onmouseover="liang.src='pictures/hover/Jiaming-Liang-hover.png'"
+    onmouseout="liang.src='pictures/static/Jiaming-Liang.png'">
+    <div id="profile" class="card-header">
+      <div id="profile" class="profile-img">
+        <img src="pictures/static/Jiaming-Liang.png" name="liang">
+      </div>
+    </div>
+    
+    <div id="profile" class="card-body">
+      <h2 class="name">Jiaming Liang, PhD</h2>
+      <p class="bio">I study how families navigate dementia care, communicate with healthcare providers, and make care decisions, with a focus on improving caregiver support and quality of care.</p>
+      
+      <div id="profile" class="location-badge">San Antonio</div>
+      <br>
+      <div id="profile" class="unique-skill-badge">Dyadic Research</div>
+      <div id="profile" class="skill-badge">Qualitative Research</div>
+      <div id="profile" class="skill-badge">Quantitative Research</div>
+      <div id="profile" class="skill-badge">Mixed Methods Research</div>
+      <div id="profile" class="skill-badge">Intervention Development</div>
+      <div id="profile" class="skill-badge">Program Evaluation</div>
+      <div id="profile" class="skill-badge">Experimental & Trial Design</div>
+      
+    </div>
+
+      <a href="" target="_blank">
+      <button id="profile" class="video-btn">Watch My Video</button>
+      </a>
+      
+  </div>
+
+  <!-- Dr. Linder -->
+  <div id="profile" class="card"
+    onmouseover="linder.src='pictures/hover/Stephen-Linder-hover.png'"
+    onmouseout="linder.src='pictures/static/Stephen-Linder.png'">
+    <div id="profile" class="card-header">
+      <div id="profile" class="profile-img">
+        <img src="pictures/static/Stephen-Linder.png" name="linder">
+      </div>
+    </div>
+    
+    <div id="profile" class="card-body">
+      <h2 class="name">Stephen Linder, PhD</h2>
+      <p class="bio"></p>
+      
+      <div id="profile" class="location-badge">Houston</div>
+      <br>
+      
+    </div>
+
+      <a href="" target="_blank">
+      <button id="profile" class="video-btn">Watch My Video</button>
+      </a>
+      
+  </div>
+
+  <!-- Dr. Link -->
+  <div id="profile" class="card"
+    onmouseover="link.src='pictures/hover/Andrea-Link-hover.png'"
+    onmouseout="link.src='pictures/static/Andrea-Link.png'">
+    <div id="profile" class="card-header">
+      <div id="profile" class="profile-img">
+        <img src="pictures/static/Andrea-Link.png" name="link">
+      </div>
+    </div>
+    
+    <div id="profile" class="card-body">
+      <h2 class="name">Andrea Link, MD</h2>
+      <p class="bio"></p>
+      
+      <div id="profile" class="location-badge">Houston</div>
+      <br>
+      
+    </div>
+
+      <a href="" target="_blank">
+      <button id="profile" class="video-btn">Watch My Video</button>
+      </a>
+      
+  </div>
+
+  <!-- Dr. McKieran -->
+  <div id="profile" class="card qual quant mixed comm-engaged comm-need prog-eval geospatial"
+    onmouseover="mckieran.src='pictures/hover/Laura-McKieran-hover.png'"
+    onmouseout="mckieran.src='pictures/static/Laura-McKieran.png'">
+    <div id="profile" class="card-header">
+      <div id="profile" class="profile-img">
+        <img src="pictures/static/Laura-McKieran.png" name="mckieran">
+      </div>
+    </div>
+    
+    <div id="profile" class="card-body">
+      <h2 class="name">Laura McKieran, DrPH</h2>
+      <p class="bio">I lead a local data intermediary that puts timely, trustworthy, understandable data in the hands of people working to strengthen Texas communities.</p>
+      
+      <div id="profile" class="location-badge">San Antonio</div>
+      <br>
+      <div id="profile" class="unique-skill-badge">Data Visualization</div>
+      <div id="profile" class="unique-skill-badge">User-Centered Design</div>
+      <div id="profile" class="skill-badge">Qualitative Research</div>
+      <div id="profile" class="skill-badge">Quantitative Research</div>
+      <div id="profile" class="skill-badge">Mixed Methods Research</div>
+      <div id="profile" class="skill-badge">Community-Engaged Research</div>
+      <div id="profile" class="skill-badge">Community Needs Assessment</div>
+      <div id="profile" class="skill-badge">Program Evaluation</div>
+      <div id="profile" class="skill-badge">Geospatial Analysis</div>
+      
+    </div>
+
+      <a href="" target="_blank">
+      <button id="profile" class="video-btn">Watch My Video</button>
+      </a>
+      
+  </div>
+
+  <!-- Dr. Morgan -->
+  <div id="profile" class="card"
+    onmouseover="morgan.src='pictures/hover/Robert-Morgan-hover.png'"
+    onmouseout="morgan.src='pictures/static/Robert-Morgan.png'">
+    <div id="profile" class="card-header">
+      <div id="profile" class="profile-img">
+        <img src="pictures/static/Robert-Morgan.png" name="morgan">
+      </div>
+    </div>
+    
+    <div id="profile" class="card-body">
+      <h2 class="name">Robert-Morgan, PhD</h2>
+      <p class="bio"></p>
+      
+      <div id="profile" class="location-badge">Houston</div>
+      <br>
+      
+    </div>
+
+      <a href="" target="_blank">
+      <button id="profile" class="video-btn">Watch My Video</button>
+      </a>
+      
+  </div>
+
+  <!-- Dr. Novikov -->
+  <div id="profile" class="card"
+    onmouseover="novikov.src='pictures/hover/Zhanna-Novikov-hover.png'"
+    onmouseout="novikov.src='pictures/static/Zhanna-Novikov.png'">
+    <div id="profile" class="card-header">
+      <div id="profile" class="profile-img">
+        <img src="pictures/static/Zhanna-Novikov.png" name="novikov">
+      </div>
+    </div>
+    
+    <div id="profile" class="card-body">
+      <h2 class="name">Zhanna Novikov, PhD</h2>
+      <p class="bio"></p>
+      
+      <div id="profile" class="location-badge">Houston</div>
+      <br>
+      
+    </div>
+
+      <a href="" target="_blank">
+      <button id="profile" class="video-btn">Watch My Video</button>
+      </a>
+      
+  </div>
+
+  <!-- Dr. Rajan -->
+  <div id="profile" class="card"
+    onmouseover="rajan.src='pictures/hover/Suja-Rajan-hover.png'"
+    onmouseout="rajan.src='pictures/static/Suja-Rajan.png'">
+    <div id="profile" class="card-header">
+      <div id="profile" class="profile-img">
+        <img src="pictures/static/Suja-Rajan.png" name="rajan">
+      </div>
+    </div>
+    
+    <div id="profile" class="card-body">
+      <h2 class="name">Suja Rajan, PhD</h2>
+      <p class="bio"></p>
+      
+      <div id="profile" class="location-badge">Houston</div>
+      <br>
+      
+    </div>
+
+      <a href="" target="_blank">
+      <button id="profile" class="video-btn">Watch My Video</button>
+      </a>
+      
+  </div>
+
+  <!-- Dr. Silveira -->
+  <div id="profile" class="card qual quant mixed comm-engaged interv-dev implement-sci exp-design"
+    onmouseover="silveira.src='pictures/hover/Stephanie-Silveira-hover.png'"
+    onmouseout="silveira.src='pictures/static/Stephanie-Silveira.png'">
+    <div id="profile" class="card-header">
+      <div id="profile" class="profile-img">
+        <img src="pictures/static/Stephanie-Silveira.png" name="silveira">
+      </div>
+    </div>
+    
+    <div id="profile" class="card-body">
+      <h2 class="name">Stephanie Silveira, PhD</h2>
+      <p class="bio">I am passionate about improving health and well-being through exercise, with a focus on helping older adults and people with disabilities stay active, mobile, and engaged in their communities.</p>
+      
+      <div id="profile" class="location-badge">Houston</div>
+      <br>
+      <div id="profile" class="skill-badge">Qualitative Research</div>
+      <div id="profile" class="skill-badge">Quantitative Research</div>
+      <div id="profile" class="skill-badge">Mixed Methods Research</div>
+      <div id="profile" class="skill-badge">Community-Engaged Research</div>
+      <div id="profile" class="skill-badge">Intervention Development</div>
+      <div id="profile" class="skill-badge">Implementation Science</div>
+      <div id="profile" class="skill-badge">Experimental & Trial Design</div>
+      
+    </div>
+
+      <a href="" target="_blank">
+      <button id="profile" class="video-btn">Watch My Video</button>
+      </a>
+      
+  </div>
+
+  <!-- Dr. Testa -->
+  <div id="profile" class="card"
+    onmouseover="testa.src='pictures/hover/Alex-Testa-hover.png'"
+    onmouseout="testa.src='pictures/static/Alex-Testa.png'">
+    <div id="profile" class="card-header">
+      <div id="profile" class="profile-img">
+        <img src="pictures/static/Alex-Testa.png" name="testa">
+      </div>
+    </div>
+    
+    <div id="profile" class="card-body">
+      <h2 class="name">Alex Testa, PhD</h2>
+      <p class="bio"></p>
+      
+      <div id="profile" class="location-badge">San Antonio</div>
+      <br>
+      
+    </div>
+
+      <a href="" target="_blank">
+      <button id="profile" class="video-btn">Watch My Video</button>
+      </a>
+      
+  </div>
+
+  <!-- Dr. Wermuth -->
+  <div id="profile" class="card"
+    onmouseover="wermuth.src='pictures/hover/Paige-Wermuth-hover.png'"
+    onmouseout="wermuth.src='pictures/static/Paige-Wermuth.png'">
+    <div id="profile" class="card-header">
+      <div id="profile" class="profile-img">
+        <img src="pictures/static/Paige-Wermuth.png" name="wermuth">
+      </div>
+    </div>
+    
+    <div id="profile" class="card-body">
+      <h2 class="name">Paige Wermuth, PhD</h2>
+      <p class="bio"></p>
+      
+      <div id="profile" class="location-badge">Houston</div>
+      <br>
+      
+    </div>
+
+      <a href="" target="_blank">
+      <button id="profile" class="video-btn">Watch My Video</button>
+      </a>
+      
+  </div>
+
+</div>
+  </div>
 </div>
 
 </body>
+
+<script>
+  var coll = document.getElementsByClassName("skills-tab");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+
+
+filterSelection("all")
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("card");
+  if (c == "all") c = "";
+  // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
+  for (i = 0; i < x.length; i++) {
+    w3RemoveClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+  }
+}
+
+// Show filtered elements
+function w3AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {
+      element.className += " " + arr2[i];
+    }
+  }
+}
+
+// Hide elements that are not selected
+function w3RemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);
+    }
+  }
+  element.className = arr1.join(" ");
+}
+
+// Add active class to the current control button (highlight it)
+var btnContainer = document.getElementById("skill-filter");
+var btns = btnContainer.getElementsByClassName("filter-btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+</script>
 </html>
